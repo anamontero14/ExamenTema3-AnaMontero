@@ -1,24 +1,49 @@
 package fecha;
 
+/**
+ * Clase fecha
+ */
 public class Fecha {
-	private int d; //dÌa
-	private int m; //mes
-	private int a; //aÒo
+	/**
+	 * Atributo privado d
+	 */
+	private int d; // dÔøΩa
 
-	
+	/**
+	 * Atributo privado m
+	 */
+	private int m; // mes
+
+	/**
+	 * Atributo a
+	 */
+	private int a; // aÔøΩo
+
+	/**
+	 * M√©todo fecha el cual no hace nada
+	 */
 	public Fecha() {
 
 	}
 
-	
+	/**
+	 * Constructor de fecha con sus diferentes par√°metros
+	 * 
+	 * @param dia
+	 * @param mes
+	 * @param anio
+	 */
 	public Fecha(int dia, int mes, int anio) {
 		this.d = dia;
 		this.m = mes;
 		this.a = anio;
 	}
 
-	
-	
+	/**
+	 * M√©todo para comprobar si la fecha es correcta o no
+	 * 
+	 * @return true o false dependiendo del resultado
+	 */
 	public boolean fechaCorrecta() {
 		boolean diaCorrecto, mesCorrecto, anioCorrecto;
 		anioCorrecto = a > 0;
@@ -43,13 +68,19 @@ public class Fecha {
 		return diaCorrecto && mesCorrecto && anioCorrecto;
 	}
 
-	// MÈtodo esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	/**
+	 * M√©todo esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	 * 
+	 * @return true o false dependiendo si el mes es bisiesto o no
+	 */
 	private boolean esBisiesto() {
 		boolean esBisiesto = (a % 4 == 0 && a % 100 != 0 || a % 400 == 0);
 		return esBisiesto;
 	}
 
-	// MÈtodo diaSiguiente
+	/**
+	 * M√©todo diaSiguiente que aumenta en 1 el d√≠a
+	 */
 	public void diaSiguiente() {
 		d++;
 		if (!fechaCorrecta()) {
@@ -62,7 +93,9 @@ public class Fecha {
 		}
 	}
 
-	// MÈtodo toString
+	/**
+	 * M√©todo toString
+	 */
 	public String toString() {
 		if (d < 10 && m < 10) {
 			return "0" + d + "-0" + m + "-" + a;
