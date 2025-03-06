@@ -1,6 +1,7 @@
 package fecha;
 
 /**
+<<<<<<< HEAD
  * Clase fecha
  */
 public class Fecha {
@@ -21,49 +22,74 @@ public class Fecha {
 
 	/**
 	 * Método fecha el cual no hace nada
+=======
+ * Clase Fecha
+ */
+public class Fecha {
+	public static final int DIEZ = 10;
+	private int varaibleD; // varaibleD�variableA
+	private int variableM; // mes
+	private int variableA; // variableA�o
+
+	/**
+	 * Metodo fecha
+>>>>>>> pmd-refactor
 	 */
 	public Fecha() {
 
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Constructor de fecha con sus diferentes parámetros
+=======
+	 * Constructor con los atributos de la clase
+>>>>>>> pmd-refactor
 	 * 
 	 * @param dia
 	 * @param mes
 	 * @param anio
 	 */
 	public Fecha(int dia, int mes, int anio) {
-		this.d = dia;
-		this.m = mes;
-		this.a = anio;
+		this.varaibleD = dia;
+		this.variableM = mes;
+		this.variableA = anio;
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Método para comprobar si la fecha es correcta o no
 	 * 
 	 * @return true o false dependiendo del resultado
+=======
+	 * Método para hayar si la fecha es correcta o no
+	 * 
+	 * @return true o false dependiendo de la validez de la operacion
+>>>>>>> pmd-refactor
 	 */
 	public boolean fechaCorrecta() {
-		boolean diaCorrecto, mesCorrecto, anioCorrecto;
-		anioCorrecto = a > 0;
-		mesCorrecto = m >= 1 && m <= 12;
-		switch (m) {
+		boolean diaCorrecto;
+		boolean mesCorrecto;
+		boolean anioCorrecto;
+		anioCorrecto = variableA > 0;
+		mesCorrecto = variableM >= 1 && variableM <= 12;
+		boolean diaMayor1 = varaibleD >= 1;
+		switch (variableM) {
 		case 2:
 			if (esBisiesto()) {
-				diaCorrecto = d >= 1 && d <= 29;
+				diaCorrecto = diaMayor1 && varaibleD <= 29;
 			} else {
-				diaCorrecto = d >= 1 && d <= 28;
+				diaCorrecto = diaMayor1 && varaibleD <= 28;
 			}
 			break;
 		case 4:
 		case 6:
 		case 9:
 		case 11:
-			diaCorrecto = d >= 1 && d <= 30;
+			diaCorrecto = diaMayor1 && varaibleD <= 30;
 			break;
 		default:
-			diaCorrecto = d >= 1 && d <= 31;
+			diaCorrecto = diaMayor1 && varaibleD <= 31;
 		}
 		return diaCorrecto && mesCorrecto && anioCorrecto;
 	}
@@ -71,24 +97,34 @@ public class Fecha {
 	/**
 	 * Método esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
 	 * 
+<<<<<<< HEAD
 	 * @return true o false dependiendo si el mes es bisiesto o no
+=======
+	 * @return true o false dependiendo del resultado de si es bisiesto o no
+>>>>>>> pmd-refactor
 	 */
 	private boolean esBisiesto() {
-		boolean esBisiesto = (a % 4 == 0 && a % 100 != 0 || a % 400 == 0);
-		return esBisiesto;
+		return variableA % 4 == 0 && variableA % 100 != 0 || variableA % 400 == 0;
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Método diaSiguiente que aumenta en 1 el día
 	 */
 	public void diaSiguiente() {
 		d++;
+=======
+	 * Método diaSiguiente que aumenta el dia en 1
+	 */
+	public void nextDay() {
+		varaibleD++;
+>>>>>>> pmd-refactor
 		if (!fechaCorrecta()) {
-			d = 1;
-			m++;
+			varaibleD = 1;
+			variableM++;
 			if (!fechaCorrecta()) {
-				m = 1;
-				a++;
+				variableM = 1;
+				variableA++;
 			}
 		}
 	}
@@ -97,15 +133,17 @@ public class Fecha {
 	 * Método toString
 	 */
 	public String toString() {
-		if (d < 10 && m < 10) {
-			return "0" + d + "-0" + m + "-" + a;
-		} else if (d < 10 && m >= 10) {
-			return "0" + d + "-" + m + "-" + a;
-		} else if (d >= 10 && m < 10) {
-			return d + "-0" + m + "-" + a;
+		String resultado = "";
+		if (varaibleD < DIEZ && variableM < DIEZ) {
+			resultado = "0" + varaibleD + "-0" + variableM + "-" + variableA;
+		} else if (varaibleD < DIEZ && variableM >= DIEZ) {
+			resultado = "0" + varaibleD + "-" + variableM + "-" + variableA;
+		} else if (varaibleD >= DIEZ && variableM < DIEZ) {
+			resultado = varaibleD + "-0" + variableM + "-" + variableA;
 		} else {
-			return d + "-" + m + "-" + a;
+			resultado = varaibleD + "-" + variableM + "-" + variableA;
 		}
+		return resultado;
 	}
 
 }
